@@ -150,7 +150,7 @@
 
   .prompt-actions .select-wrapper {
     position: relative;
-
+    
   }
 
   .prompt-actions .select-wrapper::after {
@@ -183,10 +183,16 @@
     appearance: none;
   }
 
+  .prompt-actions .custom-select:is(:focus, :hover){
+   border-color: #8b5cf6;
+   box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+  }
+
   .prompt-actions .generate-btn {
     display: flex;
     gap: 12px;
     font-weight: 500;
+    margin-left: auto;
     align-items: center;
     justify-content: center;
     padding: 12px 25px;
@@ -199,3 +205,91 @@
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(109, 40, 217, 0.3)
   }
+
+  .prompt-actions .generate-btn:hover {
+   transform: translateY(-2px);
+   box-shadow: 0 4px 10px rgba(109, 40, 217, 0.3);
+  }
+
+  .main-content .gallery-grid {
+   display: grid;
+   gap: 15px;
+   margin-top: 30px;
+   grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+  }
+
+  .gallery-grid .img-card {
+   position: relative;
+   overflow: hidden;
+   aspect-ratio: 1;
+   border-radius: 16px;
+   background: rgb(227, 227, 227);
+   border: 1px solid #C8C7FF;
+   transition: all 0.3s ease;
+  } 
+
+  .gallery-grid .img-card:not(.loading):hover {
+   transform: translateY(-5px);
+   box-shadow:rgba(0, 0, 0, 0.1);
+  }
+
+  .gallery-grid .img-card .result-img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+  }
+
+  .gallery-grid .img-card.loading :is(.result-img, .img-overlay){
+   display: none;
+  }
+
+  .gallery-grid .img-card .img-overlay {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   padding: 20px;
+   display: flex;
+   opacity: 0;
+   pointer-events: none;
+   justify-content: flex-end;
+   background: linear-gradient(transparent, rgba(0,0,0,0.8));
+   transition: all 0.3s ease;
+  }
+
+  .gallery-grid .img-card:hover .img-overlay {
+   opacity: 1;
+   pointer-events: auto;
+  }
+
+  .gallery-grid .img-card .img-download-btn {
+   height: 45px;
+   width: 45px;
+   color: #fff;
+   backdrop-filter: blur(5px);
+   border-radius: 50%;
+   border: none;
+   cursor: pointer;
+   background: rgba(255, 255, 255, 0.25);
+   transition: all 0.3s ease;
+  }
+
+.gallery-grid .img-card .img-download-btn:hover {
+   transform: scale(1.05);
+   background: rgba(255, 255, 255, 0.5);
+}
+
+.gallery-grid .img-card.loading .spinner {
+   width: 35px;
+   height: 35px;
+   border-radius: 50%;
+   border: 3px solid #C8C7FF;
+   border-top-color: #5c56e1;
+   animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+   to {
+      transform: rotate(360deg);
+   }
+}
