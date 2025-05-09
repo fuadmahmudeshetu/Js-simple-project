@@ -219,6 +219,10 @@
   }
 
   .gallery-grid .img-card {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
    position: relative;
    overflow: hidden;
    aspect-ratio: 1;
@@ -227,6 +231,14 @@
    border: 1px solid #C8C7FF;
    transition: all 0.3s ease;
   } 
+
+  .gallery-grid .img-card .status-container {
+   padding: 15px;
+   display: flex;
+   gap: 13px;
+   flex-direction: column;
+   align-items: center;
+  }
 
   .gallery-grid .img-card:not(.loading):hover {
    transform: translateY(-5px);
@@ -292,4 +304,10 @@
    to {
       transform: rotate(360deg);
    }
+}
+
+.gallery-grid .img-card .status-text {
+   color: #47376b;
+   text-align: center;
+   font-size: 0.85rem;
 }
